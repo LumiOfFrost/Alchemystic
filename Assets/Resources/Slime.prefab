@@ -4977,15 +4977,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824cbe89198bc854582a938b49bdf4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 10
-  loseRange: 20
+  detectionRange: 15
+  loseRange: 30
   movementType: 1
   movementSpeed: 7.5
   maxBurstTime: 1
   dealContactDamage: 1
-  contactDamage: 5
+  contactDamage: 7
   hasMeleeAttack: 0
-  attackRange: 1
+  meleeRange: 1
+  projectileRange: 10
   pursue: 1
   detectTag: 1
   tagToDetect: Player

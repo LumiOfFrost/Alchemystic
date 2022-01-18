@@ -34,7 +34,9 @@ public class PlaceholderEnemy : MonoBehaviour
 
     public bool hasMeleeAttack = false;
 
-    public float attackRange = 1;
+    public float meleeRange = 1;
+
+    public float projectileRange = 5;
 
     public bool pursue = true;
 
@@ -146,7 +148,7 @@ public class PlaceholderEnemy : MonoBehaviour
                     } else
                     {
 
-                        if (Vector2.Distance(transform.position, new Vector2(target.transform.position.x, target.transform.position.y + 0.5f)) > attackRange)
+                        if (Vector2.Distance(transform.position, new Vector2(target.transform.position.x, target.transform.position.y + 0.5f)) > meleeRange)
                         {
                             moveAmount = 1;
                         } else 
@@ -158,10 +160,22 @@ public class PlaceholderEnemy : MonoBehaviour
                 
                 }
                 break;
+            case "Ranger":
+                if (Vector2.Distance(transform.position, new Vector2(target.transform.position.x, target.transform.position.y + 0.5f)) > projectileRange - 1)
+                {
+                    moveAmount = 1;
+                } else if (Vector2.Distance(transform.position, new Vector2(target.transform.position.x, target.transform.position.y + 0.5f)) < projectileRange / 2)
+                {
+                    moveAmount = -1;
+                } else
+                {
+                    moveAmount = 0;
+                }
+                break;
 
         }
 
-        if (targetSeen && moveAmount > 0 && target != null)
+        if (targetSeen && moveAmount != 0 && target != null)
         {
 
             Vector3 direction = (target.transform.position - transform.position).normalized;
